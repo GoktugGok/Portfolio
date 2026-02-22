@@ -8,8 +8,8 @@ import './Projects.css';
 import FocusImg from '../assets/projects/focusflow.png';
 import ShoesImg from '../assets/projects/shoeshouse.png';
 import PandoraImg from '../assets/projects/pandoraclone.png';
-import CliQImg from '../assets/projects/CliQ.png';
-import PokedexImg from '../assets/projects/Pokedex.png';
+import CliQImg from '../assets/projects/cliq.png';
+import PokedexImg from '../assets/projects/pokedex.png';
 
 const Projects = () => {
     const { t } = useLanguage();
