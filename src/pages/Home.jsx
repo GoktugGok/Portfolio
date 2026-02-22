@@ -98,7 +98,7 @@ const Home = () => {
 
                         <div className="hero-socials">
                             <a href="https://github.com/GoktugGok" target="_blank" rel="noopener noreferrer" className="social-icon-btn"><Github size={20} /></a>
-                            <a href="https://linkedin.com/in/GoktugGok" target="_blank" rel="noopener noreferrer" className="social-icon-btn"><Linkedin size={20} /></a>
+                            <a href="https://www.linkedin.com/in/göktuğ-gök-820503213/" target="_blank" rel="noopener noreferrer" className="social-icon-btn"><Linkedin size={20} /></a>
                             <a href="mailto:gokgoktug0@gmail.com" className="social-icon-btn"><Mail size={20} /></a>
                         </div>
                     </div>
