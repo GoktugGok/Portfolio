@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MessageSquare, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { Mail, Github, Linkedin, MessageSquare, Send, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import './Contact.css';
 
+const SERVICE_ID = 'service_wdzko59';
+const TEMPLATE_ID = 'template_ufdhkxj';
+const PUBLIC_KEY = 'YnZY6dEqiy3NHEUuT';
+
 const Contact = () => {
     const { t } = useLanguage();
+    const formRef = useRef();
+    const [status, setStatus] = useState('idle'); // idle | loading | success | error
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+    const handleChange = (e) => {
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+
+        try {
+            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
+            setStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch (err) {
+            console.error(err);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
+    };
 
     return (
         <section id="contact" className="contact-section">
@@ -54,27 +82,84 @@ const Contact = () => {
                     </motion.div>
 
                     <motion.form
+                        ref={formRef}
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                         className="contact-form glass-card"
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleSubmit}
                     >
                         <div className="form-group">
                             <label>{t("Tam Adınız", "Full Name")}</label>
-                            <input type="text" placeholder={t("Adınız Soyadınız", "Your Name")} />
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder={t("Adınız Soyadınız", "Your Name")}
+                                required
+                            />
                         </div>
                         <div className="form-group">
                             <label>{t("E-posta Adresiniz", "Email Address")}</label>
-                            <input type="email" placeholder="email@example.com" />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="email@example.com"
+                                required
+                            />
                         </div>
                         <div className="form-group">
                             <label>{t("Mesajınız", "Message")}</label>
-                            <textarea placeholder={t("Size nasıl yardımcı olabilirim?", "How can I help you?")}></textarea>
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder={t("Size nasıl yardımcı olabilirim?", "How can I help you?")}
+                                required
+                            />
                         </div>
-                        <button type="submit" className="btn btn-primary submit-btn">
-                            {t("Mesaj Gönder", "Send Message")} <Send size={18} />
+
+                        {status === 'success' && (
+                            <motion.div
+                                className="form-feedback success"
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <CheckCircle size={18} />
+                                {t("Mesajın gönderildi! En kısa sürede dönüş yapacağım.", "Message sent! I'll get back to you soon.")}
+                            </motion.div>
+                        )}
+
+                        {status === 'error' && (
+                            <motion.div
+                                className="form-feedback error"
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <AlertCircle size={18} />
+                                {t("Bir hata oluştu. Lütfen tekrar dene.", "Something went wrong. Please try again.")}
+                            </motion.div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary submit-btn"
+                            disabled={status === 'loading'}
+                        >
+                            {status === 'loading' ? (
+                                <>
+                                    <Loader size={18} className="spin" />
+                                    {t("Gönderiliyor...", "Sending...")}
+                                </>
+                            ) : (
+                                <>
+                                    {t("Mesaj Gönder", "Send Message")} <Send size={18} />
+                                </>
+                            )}
                         </button>
                     </motion.form>
                 </div>

@@ -19,19 +19,19 @@ const Achievements = () => {
             ),
             icon: <Trophy className="ach-icon highlight" size={32} />,
             tags: ["Python", "Django", "Backend", "Competition"],
-            image: "https://images.unsplash.com/photo-1606326666490-4575799a48bb?q=80&w=2070&auto=format&fit=crop"
+            image: "/django-cert.png"
         },
         {
             title: t("C# Programlama Sertifikası", "C# Programming Certificate"),
             issuer: t("BTK Akademi", "BTK Academy"),
-            date: "2023",
+            date: "2024",
             description: t(
                 "C# dili, Nesne Yönelimli Programlama (OOP) ve .NET mimarisi üzerine uzmanlık eğitimi.",
                 "Specialized training on C# language, Object Oriented Programming (OOP) and .NET architecture."
             ),
             icon: <Award className="ach-icon" size={32} />,
             tags: ["C#", ".NET", "OOP"],
-            image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2070&auto=format&fit=crop"
+            image: "/csharp-cert.png"
         }
     ];
 
@@ -63,6 +63,10 @@ const Achievements = () => {
                         >
                             <div className="ach-icon-wrapper">
                                 <div className="icon-main">{ach.icon}</div>
+                                <div className="view-overlay">
+                                    <Eye size={20} />
+                                    <span>{t("GÖRÜNTÜLE", "VIEW")}</span>
+                                </div>
                                 {index === 0 && <motion.div
                                     className="winner-badge"
                                     initial={{ x: "-50%", scale: 1 }}
@@ -71,7 +75,7 @@ const Achievements = () => {
                                     transition={{ repeat: Infinity, duration: 2 }}
                                 >
                                     <Star size={12} fill="currentColor" /> #1 Rank
-                                </motion.div>}  
+                                </motion.div>}
                             </div>
 
                             <div className="ach-content">

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll'; 
+import { Link } from 'react-scroll';
 import { Github, Linkedin, Mail, ArrowRight, FileDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import './Home.css';
 
 const Home = () => {
     const { t, lang } = useLanguage();  // ✅ language değil, lang!
-    
+
     // Dil değişimini izle
     useEffect(() => {
         console.log('Home component - lang from context:', lang);
@@ -76,21 +76,21 @@ const Home = () => {
                     </p>
 
                     <div className="hero-actions">
-                         <Link
-                            to="works"  
+                        <Link
+                            to="works"
                             smooth={true}
                             duration={500}
-                            offset={-70}  
+                            offset={-70}
                             className="btn btn-primary btn-with-icon"
                         >
                             {t("Projelerimi İncele", "View My Projects")} <ArrowRight size={18} />
                         </Link>
-                        
-                        <a 
+
+                        <a
                             href={cvPath}
                             download={downloadFileName}
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="btn btn-secondary btn-with-icon"
                         >
                             {t("CV İndir", "Download CV")} <FileDown size={18} />

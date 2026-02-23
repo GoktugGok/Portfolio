@@ -78,7 +78,7 @@ const Projects = () => {
             tag: t('Pokémon API', 'Pokemon API'),
             link: 'https://pokedex-react-js-chi.vercel.app'
         },
-        
+
     ];
 
     return (
