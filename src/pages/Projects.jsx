@@ -25,6 +25,17 @@ const Projects = () => {
     const projects = [
         {
             id: 1,
+            title: 'CliQ',
+            image: CliQImg,
+            description: t(
+                'Kendini ifade etmenin yeni yolu! Cliq ile fotoğraf paylaş, takipçilerinle etkileşime geç, arkadaşlarınla mesajlaş ve gönderilere beğeni/yorum yap. ',
+                'A new way to express yourself! Share photos, interact with followers, chat with friends, and like/comment on posts with Cliq. '
+            ),
+            tag: t('Sosyal Medya', 'Social Media'),
+            link: 'https://cliq-v0o1.onrender.com'
+        },
+        {
+            id: 2,
             title: 'Focus Flow',
             image: FocusImg,
             description: t(
@@ -35,7 +46,7 @@ const Projects = () => {
             link: 'https://focus-flow-ruddy-two.vercel.app'
         },
         {
-            id: 2,
+            id: 3,
             title: 'Shoes House',
             image: ShoesImg,
             description: t(
@@ -45,17 +56,7 @@ const Projects = () => {
             tag: t('E-Ticaret', 'eCommerce'),
             link: 'https://shoes-shop-2mwf.onrender.com'
         },
-        {
-            id: 3,
-            title: 'CliQ',
-            image: CliQImg,
-            description: t(
-                'Kendini ifade etmenin yeni yolu! Cliq ile fotoğraf paylaş, takipçilerinle etkileşime geç, arkadaşlarınla mesajlaş ve gönderilere beğeni/yorum yap. ',
-                'A new way to express yourself! Share photos, interact with followers, chat with friends, and like/comment on posts with Cliq. '
-            ),
-            tag: t('Sosyal Medya', 'Social Media'),
-            link: 'https://cliq-v0o1.onrender.com'
-        },
+
         {
             id: 4,
             title: 'Pandora Clone',
