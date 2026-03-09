@@ -32,7 +32,7 @@ const Projects = () => {
                 'A new way to express yourself! Share photos, interact with followers, chat with friends, and like/comment on posts with Cliq. '
             ),
             tag: t('Sosyal Medya', 'Social Media'),
-            link: 'https://cliq-v0o1.onrender.com'
+            link: 'https://cliqq.up.railway.app'
         },
         {
             id: 2,
@@ -54,7 +54,7 @@ const Projects = () => {
                 'Modern eCommerce platform for premium footwear with a sleek, responsive shopping interface.'
             ),
             tag: t('E-Ticaret', 'eCommerce'),
-            link: 'https://shoes-shop-2mwf.onrender.com'
+            link: 'https://shoesshop.up.railway.app'
         },
 
         {
@@ -66,7 +66,7 @@ const Projects = () => {
                 'A luxury jewelry eCommerce experience inspired by Pandora, focusing on elegance and detail.'
             ),
             tag: t('Lüks Perakende', 'Luxury Retail'),
-            link: 'https://jewelry-e-commerce.onrender.com'
+            link: 'https://jewelry-e-commerce.up.railway.app'
         },
         {
             id: 5,
